@@ -6,3 +6,63 @@ library(installr)
 
 updateR() 
 
+
+
+
+########################################################################################################################################################################
+
+Actualización de R o RStudio en Windows
+Siempre y cuando sea necesario se recomienda mantener actualizada la versión de R y/o RStudio que estamos trabajando ya que con la generación de nuevas librerías muchas de ellas no pueden ser ejecutadas en versiones pasadas de R. La actualización en Windows a diferencia del sistema operativo de Linux o MacOS, es aparentemente complicada ya que dicha actualización debe realizarse mediante el uso de un paquete llamado installr, el cual es solo para Windows y que nos permite facilitar el proceso de actualización.
+
+El paquete installr ofrece una serie de funciones de R para la instalación y actualización del software, no obstante, actualmente, esta solo para el sistema operativo Windows.
+
+Para instalar R, se puede ejecutar el siguiente código:
+
+install.packages("installr")
+Con el paquete ya instalado se carga la librería
+
+library(installr)
+Con el uso del comando updateR se comenzara el proceso de actualización de R. También, se verificará si hay versiones más nuevas y, si hay una disponible para instalarla, además nos irá guiando a través de las decisiones que deberá tomar para completar la instalación.
+
+updateR() 
+Posterior a ejecutar esta función realizaremos los siguientes pasos.:
+
+Debemos de comprobar cuál es la última versión de R. Si la ultima versión está actualizada, la función termina y nos regresa un FALSE.
+Si hay disponible una versión mas actual de R que la que tenemos se nos preguntará si queremos revisar las NEWS “review the NEWS” de la versión mas reciente disponible de R para decidir si instalamos la nueva versión de R o no.
+Si aceptamos, la función comenzará con la descarga y la instalación de la última versión de R (presionar continuar en cada paso que nos aparezca).
+Cuando haya finalizado la instalación, tenemos que presionar cualquier tecla, y la función procederá a copiar los paquetes de la instalación de R que tenemos instalada hacia la versión de R nueva que estamos instalando.
+Posteriormente, podremos borrar todos los paquetes en la instalación de R previa y que ya no utilizaremos.
+Una vez copiados todos los paquetes y que hayamos borrados todos los anteriores, nos aparecerá la opción de actualizar todos los paquetes en nuestra nueva versión de R.
+Finalmente, podemos abrir el nuevo R y cerrar la sesión actual de la versión de R previa en la que estábamos trabajando.
+Si nosotros estamos seguros de que deseamos actualizar R y que queremos mover los paquetes de nuestro antiguo R a la nueva versión (no copiarlos, sino moverlos) únicamente debemos de ejecutar lo siguiente:
+
+updateR(
+  fast = FALSE,
+  browse_news = TRUE,
+  install_R = TRUE,
+  copy_package = FALSE,
+  copy_Rprofile.site = TRUE,
+  keep_old_packages = FALSE,
+  update_packages = TRUE
+)
+Este comando lo que hace es: instalar, mover, actualizar-paquetes, cerrar R.
+
+Estos mismos pasos se pueden ejecutar de forma individual:
+
+check.for.updates.R()
+install.R()
+copy.packages.between.libraries()
+Si usamos “the global library system”", podemos ejecutar lo siguiente en la antigua R, con lo que solo se instalará R y se cerrará.
+
+updateR(
+  fast = FALSE,
+  browse_news = TRUE,
+  install_R = FALSE,
+  copy_package = FALSE,
+  copy_Rprofile.site = FALSE,
+  keep_old_packages = FALSE,
+  update_packages = TRUE
+)
+Y así es como podemos actualizar R, la paquetería installr también nos permite actualizar otros programas en Windows, lo cual puedes revisar en el siguiente enlace:
+
+https://cran.r-project.org/web/packages/installr/installr.pdf

@@ -1,0 +1,8 @@
+# Instalar y actualizar Rstudio
+
+install.packages("installr")
+
+library(installr)
+
+updateR() 
+
